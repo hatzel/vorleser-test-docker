@@ -1,0 +1,11 @@
+services:
+  - docker
+
+before_install:
+  - docker login -u="$DOCKER_NAME" -p="$DOCKER_PASSWORD"
+
+script:
+  - docker build -t $DOCKER_NAME/vorleser-test .
+
+after_success:
+  - docker push $DOCKER_NAME/vorleser-test
