@@ -14,7 +14,7 @@ RUN apt-get update && \
     libavcodec-dev \
     libavformat-dev \
     libavfilter-dev \
-    libpq-dev \
+    libssl-dev \
     libavdevice-dev \
     libavresample-dev \
     autoconf automake autotools-dev libtool xutils-dev && \
