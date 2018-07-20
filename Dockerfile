@@ -25,7 +25,7 @@ RUN curl https://sh.rustup.rs -sSf | \
     sh -s -- --default-toolchain nightly -y
 
 ENV PATH=/root/.cargo/bin:$PATH
-RUN rustup default nightly-2018-03-19
+RUN rustup override set nightly-2018-07-17
 
 # install diesel cli
 RUN cargo install diesel_cli --no-default-features --features "sqlite" --verbose
