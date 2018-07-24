@@ -8,6 +8,9 @@ RUN apt-get update && \
     ca-certificates curl file \
     build-essential \
     pkg-config \
+    cmake \
+    zlib1g \
+    zlib1g-dev \
     ffmpeg \
     libsqlite3-0 \
     libsqlite3-dev \
@@ -28,8 +31,7 @@ ENV PATH=/root/.cargo/bin:$PATH
 RUN rustup override set nightly-2018-07-17
 
 # install diesel cli
-RUN cargo install diesel_cli --no-default-features --features "sqlite" --verbose
-
+RUN RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin
 RUN apt update
 RUN apt-get install build-essential  clang -y
 ENV PATH /root/.cargo/bin:$PATH
