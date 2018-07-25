@@ -25,13 +25,11 @@ RUN apt-get update && \
 
 # install toolchain using rustup
 RUN curl https://sh.rustup.rs -sSf | \
-    sh -s -- --default-toolchain nightly -y
+    sh -s -- --default-toolchain nightly-2018-07-18 -y
 
 ENV PATH=/root/.cargo/bin:$PATH
-RUN rustup override set nightly-2018-07-17
 
-# install diesel cli
-RUN RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin
 RUN apt update
 RUN apt-get install build-essential  clang -y
+RUN RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin
 ENV PATH /root/.cargo/bin:$PATH
